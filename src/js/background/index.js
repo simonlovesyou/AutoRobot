@@ -4,11 +4,20 @@ import Menu from 'menu';
 import path from 'path';
 import BrowserWindow from 'browser-window';
 import clipboard from 'clipboard';
+const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
 
 const iconPath = path.join(process.cwd(), 'icon.png');
 
 const background = (() => {
   app.on('ready', () => {
+
+    let mainWindow = new BrowserWindow({width: 800, height: 600, show: true});
+    // and load the index.html of the app.
+    mainWindow.loadUrl('file://' + process.cwd() + '/static/html/index.html');
+
+    if(dev) {
+      mainWindow.openDevTools();
+    }
 
     // Quit when all windows are closed.
     app.on('window-all-closed', () => {
