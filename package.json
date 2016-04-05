@@ -18,6 +18,7 @@
     "grunt-babel": "^6.0.0",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-jade": "^1.0.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^17.0.0",
     "grunt-jsonmin": "^0.2.4",
