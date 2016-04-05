@@ -25,7 +25,6 @@ const background = (() => {
         eApp.quit();
       }
     });
-    console.log("Hej :)");
 
     const appIcon = new Tray(iconPath);
 
