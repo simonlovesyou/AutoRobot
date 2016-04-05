@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 	  	},
       main: {
         files: ["src/js/*.js", "src/js/background/*.js"],
-        tasks: ["babel:background"]
+        tasks: ["babel:main"]
       }
 	  }
 	});
