@@ -4,9 +4,10 @@
   "description": "Open-source application for macro-creation and automation software.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava test/index.js"
   },
   "devDependencies": {
+    "ava": "^0.13.0",
     "babel-plugin-transform-decorators": "^6.6.5",
     "babel-plugin-transform-react-jsx": ">= 6.3",
     "babel-preset-es2015": "^6.6.0",
