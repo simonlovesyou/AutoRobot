@@ -1,4 +1,5 @@
-
+'use strict';
+const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
 
 module.exports = function(grunt) {
 
@@ -12,7 +13,7 @@ module.exports = function(grunt) {
       },
 	    main: {
         options: {
-          sourceMap: false
+          sourceMap: dev
         },
 	      files: {
           'client/index.js': 'src/js/index.js',
@@ -21,7 +22,7 @@ module.exports = function(grunt) {
 	    },
       client: {
         options: {
-          sourceMap: true
+          sourceMap: dev
         },
         files: [{
           "expand": true,
@@ -42,7 +43,7 @@ module.exports = function(grunt) {
       release: {
         options: {
           data: {
-            debug: false
+            debug: dev
           },
           pretty: true
         },
@@ -69,6 +70,7 @@ module.exports = function(grunt) {
 	  }
 	});
 
-	grunt.registerTask("default", ["clean", "babel", "jade", "watch"]);
+	grunt.registerTask("dev", ["clean", "babel", "jade", "watch"]);
+  grunt.registerTask("build", ["clean", "babel", "jade"]);
 
 };
