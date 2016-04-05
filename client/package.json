@@ -1,0 +1,34 @@
+{
+  "name": "Simon-Says",
+  "version": "1.0.0",
+  "description": "Open-source application for macro-creation and automation software.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bluebird": "^2.9.33",
+    "bootstrap": "^3.3.5",
+    "datauri": "^0.8.0",
+    "dialogs": "^1.1.8",
+    "lodash": "^3.10.1",
+    "robotjs": "^0.3.7",
+    "safe-eval": "^0.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonlovesyou/simon-says.git"
+  },
+  "keywords": [
+    "fs"
+  ],
+  "author": "simonlovesyou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonlovesyou/Simon-says/issues"
+  },
+  "homepage": "https://github.com/simonlovesyou/Simon-says"
+}
