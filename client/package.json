@@ -12,7 +12,7 @@
     "datauri": "^0.8.0",
     "dialogs": "^1.1.8",
     "lodash": "^3.10.1",
-    "robotjs": "^0.3.7",
+    "node-dir": "^0.1.11",
     "safe-eval": "^0.2.0"
   },
   "scripts": {
