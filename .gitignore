@@ -1,3 +1,4 @@
 node_modules/
 client/
+!src/js/client/
 **/*.log
