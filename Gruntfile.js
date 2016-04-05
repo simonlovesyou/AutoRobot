@@ -10,12 +10,13 @@ module.exports = function(grunt) {
       options: {
         presets: ['es2015']
       },
-	    background: {
+	    main: {
         options: {
           sourceMap: false
         },
 	      files: {
-          'client/background.js': 'src/background.js'
+          'client/index.js': 'src/js/index.js',
+          'client/background/index.js': 'src/js/background/index.js'
         }
 	    },
       client: {
@@ -37,6 +38,22 @@ module.exports = function(grunt) {
     clean: {
       tmp: ["client/**/*", "!client/package.json", "!client/node_modules/**", "!client/icon.png"]
     },
+    jade: {
+      release: {
+        options: {
+          data: {
+            debug: false
+          },
+          pretty: true
+        },
+        files: {
+          "client/static/html/index.html": ["src/jade/content.jade"]
+        },
+        compile: {
+          expand: true
+        }
+      }
+    },
 	  watch: {
       options: {
         spawn: false
@@ -45,13 +62,13 @@ module.exports = function(grunt) {
 	  		files: ["src/index.js"],
 	  		tasks: ["babel:client"]
 	  	},
-      background: {
-        files: ["src/background.js"],
+      main: {
+        files: ["src/js/*.js", "src/js/background/*.js"],
         tasks: ["babel:background"]
       }
 	  }
 	});
 
-	grunt.registerTask("default", ["clean", "babel", "watch"]);
+	grunt.registerTask("default", ["clean", "babel", "jade", "watch"]);
 
 };

@@ -1,4 +1,4 @@
-import background from './background.js';
+import background from './background/';
 
 background();
 

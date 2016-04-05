@@ -1,10 +1,3 @@
-/*import app from 'app';
-import BrowserWindow from 'browser-window';
-import ipc from 'ipc';
-import path from 'path';
-import Promise from 'bluebird';
-let fs = Promise.promisifyAll(require('fs'));*/
-
 import app from 'app';
 import Tray from 'tray';
 import Menu from 'menu';
@@ -12,7 +5,7 @@ import path from 'path';
 import BrowserWindow from 'browser-window';
 import clipboard from 'clipboard';
 
-const iconPath = path.join(__dirname, 'icon.png');
+const iconPath = path.join(process.cwd(), 'icon.png');
 
 const background = (() => {
   app.on('ready', () => {
@@ -23,7 +16,7 @@ const background = (() => {
         eApp.quit();
       }
     });
-
+    console.log("Hej :)");
 
     const appIcon = new Tray(iconPath);
 
@@ -47,18 +40,15 @@ const background = (() => {
         }
       }]
 
-    /*let contextMenu = Menu.buildFromTemplate(db('copies').toArray()
-      .filter(copy => copy.favourite)
-      .map(copy => ({
-        label: copy.copyName,
-        type: 'normal',
-        toolTip: copy.copyText,
-        click: (() => clipboard.writeText(copy.copyText))
-      }))
-    .concat(footer));*/
+  var contextMenu = Menu.buildFromTemplate([
+    { label: 'Item1', type: 'radio' },
+    { label: 'Item2', type: 'radio' },
+    { label: 'Item3', type: 'radio', checked: true },
+    { label: 'Item4', type: 'radio' }
+  ]);
 
     appIcon.setToolTip('AutoRobot');
-    //appIcon.setContextMenu(contextMenu);
+    appIcon.setContextMenu(contextMenu);
 
   });
 
