@@ -7,13 +7,14 @@
     "test": "test"
   },
   "dependencies": {
+    "babel-core": "^6.7.4",
     "bluebird": "^2.9.33",
     "bootstrap": "^3.3.5",
     "datauri": "^0.8.0",
     "dialogs": "^1.1.8",
     "lodash": "^3.10.1",
     "node-dir": "^0.1.11",
-    "safe-eval": "^0.2.0"
+    "safe-eval": "^0.2.0",
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
