@@ -61,9 +61,13 @@ const background = (() => {
     appIcon.setContextMenu(contextMenu);
 
   });
+});
 
+
+ipcMain.on('code', (event, arg) => {
+  console.log("Got a code in the main thread!");
+  console.log(event, arg);
 })
-
 
 
 module.exports = background;
