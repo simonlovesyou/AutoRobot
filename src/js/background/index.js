@@ -5,18 +5,17 @@ import {BrowserWindow} from 'electron';
 import {clipboard} from 'electron';
 import {ipcMain} from 'electron';
 import path from 'path';
-import BrowserWindow from 'browser-window';
-import clipboard from 'clipboard';
-const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
+import shortcut from './util/';
 
-const iconPath = path.join(process.cwd(), 'icon.png');
+const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
+const iconPath = path.join(process.cwd(), 'client/icon.png');
 
 const background = (() => {
   app.on('ready', () => {
 
     let mainWindow = new BrowserWindow({width: 800, height: 600, show: true});
     // and load the index.html of the app.
-    mainWindow.loadUrl('file://' + process.cwd() + '/static/html/index.html');
+    mainWindow.loadURL('file://' + process.cwd() + '/client/static/html/index.html');
 
     if(dev) {
       mainWindow.openDevTools();
