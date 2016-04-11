@@ -5,8 +5,10 @@ import {BrowserWindow} from 'electron';
 import {clipboard} from 'electron';
 import {ipcMain} from 'electron';
 import path from 'path';
-import shortcut from './util/';
+import lib from './lib/';
+import {setUserRequire} from './util/';
 
+const userRequire = setUserRequire(lib);
 const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
 const iconPath = path.join(process.cwd(), 'client/icon.png');
 
