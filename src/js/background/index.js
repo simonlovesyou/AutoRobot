@@ -5,6 +5,7 @@ import {BrowserWindow} from 'electron';
 import {clipboard} from 'electron';
 import {ipcMain} from 'electron';
 import path from 'path';
+import safeEval from 'safe-eval';
 import lib from './lib/';
 import {setUserRequire} from './util/';
 
@@ -67,8 +68,9 @@ const background = (() => {
 
 
 ipcMain.on('code', (event, arg) => {
-  console.log("Got a code in the main thread!");
-  console.log(event, arg);
+
+  safeEval(arg.code, {require: userRequire, console, setTimeout, setImmediate});
+
 })
 
 
