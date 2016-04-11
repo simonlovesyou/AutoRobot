@@ -1,19 +1,70 @@
 import {globalShortcut} from 'electron';
+const modifiersRegex = [
+                        /(?:^|\+)(Command)|(Cmd)/, 
+                        /(?:^|\+)(Control)|(Ctrl)/, 
+                        /(?:^|\+)(CommandOrControl|CmdOrCtrl)/, 
+                        /(?:^|\+)(Alt)/, 
+                        /(?:^|\+)(Shift)/, 
+                        /(?:^|\+)(Super)/
+                      ];
+const keycodeRegex = [
+                        /\+([0-9]$)/,
+                        /\+([A-Z]$)$/,
+                        /\+(F[1-24])$/,
+                        /\+(\+)$/,
+                        /\+(Space)$/,
+                        /\+(Backspace)$/,
+                        /\+(Delete)$/,
+                        /\+(Insert)$/,
+                        /\+(Return|Enter)$/,
+                        /\+(Up|Down|Left|Right)$/,
+                        /\+(Home)$/,
+                        /\+(End)$/,
+                        /\+(PageUp|PageDown)$/,
+                        /\+(Escape|Esc)$/,
+                        /\+(Volume(?:Up|Down|Mute))$/,
+                        /\+(Media(?:NextTrack|PreviousTrack|Stop|PlayPause))$/
+                      ];
+
+
+console.log(isValid('Command+Insert+9'));
 
 function registerShortcut (shortcut, cb) {
 
-  //TODO: Should validate so that shortcut is a valid shortcut
+  let result = isValid(shortcut);
+
+  if(result instanceof Error) {
+    return cb(result)
+  }
+
+  let valid = result;
 
   let ref = globalShortcut.register(shortcut, cb);
 
   if(!ref) {
-    throw new Error('Shortcut registration failed');
+    return cb(new Error('Shortcut registration failed'));
   }
+  return;
+}
+
+function isValid(shortcut) {
+  let modifier = modifiersRegex.some(regex => Boolean(shortcut.match(regex)));
+  let keycode = keycodeRegex.some(regex => Boolean(shortcut.match(regex)));
+
+  if(keycode && modifier) {
+    let ref = globalShortcut.isRegistered(shortcut);
+    if(ref) {
+      return new Error('Shortcut is already registered');
+    }
+  } else {
+    return new Error('Shortcut is not a valid key combination');
+  }
+  return true;
 }
 
 module.exports = {
   registerShortcut,
   unregisterAll: globalShortcut.unregisterAll,
-  isRegistered: globalShortcut.isRegistered
-  //TODO: Add a function for unregistering a specific shortcut
+  isRegistered: globalShortcut.isRegistered,
+  isValid
 }
