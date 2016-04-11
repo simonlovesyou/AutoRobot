@@ -32,15 +32,15 @@ module.exports = function(grunt) {
           "ext": ".js"
         }]
       },
-      lib: {
+      "main-lib": {
         options: {
           sourceMap: dev
         },
         files: [{
           "expand": true,
-          "cwd": "src/js/client/lib/",
-          "src": ["**/*.js"],
-          "dest": "./client/static/js/lib/",
+          "cwd": "src/js/background/lib/",
+          "src": ["*.js"],
+          "dest": "./client/background/lib/",
           "ext": ".js"
         }]
       },
@@ -87,9 +87,9 @@ module.exports = function(grunt) {
 	  		files: ["src/js/client/**/*.js"],
 	  		tasks: ["babel:client"]
 	  	},
-      "client-lib": {
-        files: ["src/js/client/lib/*.js"],
-        tasks: ["babel:lib"]
+      "main-lib": {
+        files: ["src/js/background/lib/*.js"],
+        tasks: ["babel:main-lib"]
       },
       main: {
         files: ["src/js/*.js", "src/js/background/*.js"],
