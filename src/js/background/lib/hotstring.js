@@ -1,3 +1,4 @@
+//Not possible yet
 function hotstring (hotstring, cb) {
 
 }
