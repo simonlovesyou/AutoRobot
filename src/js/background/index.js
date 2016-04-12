@@ -9,7 +9,6 @@ import safeEval from 'safe-eval';
 import lib from './lib/';
 import {setUserRequire} from './util/';
 
-const userRequire = setUserRequire(lib);
 const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
 const iconPath = path.join(process.cwd(), 'client/icon.png');
 
@@ -69,7 +68,16 @@ const background = (() => {
 
 ipcMain.on('code', (event, arg) => {
 
-  safeEval(arg.code, {require: userRequire, console, setTimeout, setImmediate});
+  let userContext = {
+    require: setUserRequire(lib, arg.dir),
+    console,
+    setTimeout,
+    setImmediate,
+    __dirname: arg.dir,
+    Math
+  };
+
+  safeEval(arg.code, userContext);
 
 })
 
