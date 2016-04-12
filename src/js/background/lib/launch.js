@@ -13,7 +13,11 @@ function launch(path, options = {}) {
     throw new Error('Option key \'detached\' must an instance of Boolean, got ', typeof options.detached);
   }
 
-  return exec(path, {detached: options.detached || true}, (err, stdout, stderr) => {
+  options = {
+    detached: options.detached || true
+  }
+
+  return exec(path, options, (err, stdout, stderr) => {
     if(err) {
       console.log(stderr);
     }
