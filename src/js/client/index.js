@@ -38,7 +38,7 @@ function parseFile (err, content, next) {
       throw e;
     }
   } finally {
-    ipcRenderer.send('code', {code});
+    ipcRenderer.send('code', {code, dir: scriptDirectory});
   }
 
   next();
