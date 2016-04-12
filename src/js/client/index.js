@@ -11,7 +11,8 @@ let scriptDirectory = process.env.script;
 
 let options = {
   match: /.js$/,
-  exclude: /^\./
+  exclude: /^\./,
+  recursive: false
 }
 
 if (path.isAbsolute(scriptDirectory)) {
