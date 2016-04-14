@@ -7,7 +7,7 @@
     "test": "ava test/index.js",
     "dev": "NODE_ENV='dev' grunt dev",
     "build": "NODE_ENV='production' grunt build",
-    "start": "script='/Users/simon/Documents/autorobot/tempScript/' electron ."
+    "start": "script='/Users/simon/Documents/autorobot/tempScript/index.js' electron ."
   },
   "devDependencies": {
     "ava": "^0.13.0",
