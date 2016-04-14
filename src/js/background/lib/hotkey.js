@@ -1,4 +1,4 @@
-import {shortcut} from '../util/index.js';
+import {shortcut} from '../util/';
 
 function hotkey (s, cb) {
   shortcut.registerShortcut(s, cb);
