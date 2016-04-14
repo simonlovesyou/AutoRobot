@@ -55,6 +55,18 @@ module.exports = function(grunt) {
           "dest": "./client/background/util/",
           "ext": ".js"
         }]
+      },
+      "client-util": {
+        options: {
+          sourceMap: dev
+        },
+        files: [{
+          "expand": true,
+          "cwd": "src/js/client/util/",
+          "src": ["*.js"],
+          "dest": "./client/client/util/",
+          "ext": ".js"
+        }]
       }
 	  },
     eslint: {
@@ -98,6 +110,10 @@ module.exports = function(grunt) {
       "main-util": {
         files: ["src/js/background/util/*.js"],
         tasks: ["babel:main-util"]
+      },
+      "client-util": {
+        files: ["src/js/client/util/*.js"],
+        tasks: ["babel:client-util"]
       }
 	  }
 	});
