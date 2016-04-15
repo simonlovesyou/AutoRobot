@@ -67,6 +67,30 @@ module.exports = function(grunt) {
           "dest": "./client/client/util/",
           "ext": ".js"
         }]
+      },
+      "client-lib": {
+        options: {
+          sourceMap: dev
+        },
+        files: [{
+          "expand": true,
+          "cwd": "src/js/client/lib/",
+          "src": ["*.js"],
+          "dest": "./client/client/lib/",
+          "ext": ".js"
+        }]
+      },
+      "client-userland": {
+        options: {
+          sourceMap: dev
+        },
+        files: [{
+          "expand": true,
+          "cwd": "src/js/client/userland/",
+          "src": ["*.js"],
+          "dest": "./client/static/js/userland/",
+          "ext": ".js"
+        }]
       }
 	  },
     eslint: {
@@ -84,7 +108,8 @@ module.exports = function(grunt) {
           pretty: true
         },
         files: {
-          "client/static/html/index.html": ["src/jade/content.jade"]
+          "client/static/html/index.html": ["src/jade/content.jade"],
+          "client/static/html/userland.html": ["src/jade/userland.jade"]
         },
         compile: {
           expand: true
@@ -113,7 +138,11 @@ module.exports = function(grunt) {
       },
       "client-util": {
         files: ["src/js/client/util/*.js"],
-        tasks: ["babel:client-util"]
+        tasks: ["babel:client-lib"]
+      },
+      "client-userland": {
+        files: ["src/js/client/userland/*.js"],
+        tasks: ["babel:client-userland"]
       }
 	  }
 	});
