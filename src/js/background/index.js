@@ -7,10 +7,12 @@ import {ipcMain} from 'electron';
 import path from 'path';
 import safeEval from 'safe-eval';
 import lib from './lib/';
+import {userWindow} from './lib/';
 import {setUserRequire} from './util/';
 
 const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
 const iconPath = path.join(process.cwd(), 'client/icon.png');
+
 
 const background = (() => {
   app.on('ready', () => {
@@ -18,6 +20,7 @@ const background = (() => {
     let mainWindow = new BrowserWindow({width: 800, height: 600, show: true});
     // and load the index.html of the app.
     mainWindow.loadURL('file://' + process.cwd() + '/client/static/html/index.html');
+    lib.userWindow.createWindow = userWindow.setBrowserWindow(mainWindow);
 
     if(dev) {
       mainWindow.openDevTools();
