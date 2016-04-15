@@ -5,9 +5,6 @@ import {BrowserWindow} from 'electron';
 import {clipboard} from 'electron';
 import {ipcMain} from 'electron';
 import path from 'path';
-import safeEval from 'safe-eval';
-import lib from './lib/';
-import {setUserRequire} from './util/';
 
 const dev = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/dev/) : true;
 const iconPath = path.join(process.cwd(), 'client/icon.png');
@@ -64,22 +61,6 @@ const background = (() => {
 
   });
 });
-
-
-ipcMain.on('code', (event, arg) => {
-
-  let userContext = {
-    require: setUserRequire(lib, arg.dir),
-    console,
-    setTimeout,
-    setImmediate,
-    __dirname: arg.dir,
-    Math
-  };
-
-  safeEval(arg.code, userContext);
-
-})
 
 
 module.exports = background;

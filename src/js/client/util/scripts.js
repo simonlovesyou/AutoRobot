@@ -26,12 +26,14 @@ function addScript (scriptSrc, cb) {
 
       let script = {
         code,
-        status
+        status,
+        errors: [],
+        logs: []
       }
 
-      scripts[scriptSrc] = script;
+      console.log("adding script " + scriptSrc);
 
-      console.log(script);
+      scripts[scriptSrc] = script;
 
       return cb(script);
     });
@@ -42,6 +44,25 @@ function addScript (scriptSrc, cb) {
 
 function loadScript (scriptSrc) {
   return scripts[scriptSrc] || new Error('Cannot find parsed script.');
+}
+
+function addError (scriptSrc, error) {
+  scripts[scriptSrc].errors.push(error);
+}
+
+function addLog (scriptSrc, dev) {
+
+  let logs = scripts[scriptSrc].logs
+
+  return ((log) => {
+    logs.push({
+        log, 
+        type: typeof log === 'object' ? (log instanceof Error ? 'Error' : 'Object') : typeof log});
+    if(dev) {
+      console.log("Userland log: " + log);
+      console.log({log})
+    }
+  });
 }
 
 function parseCode(code) {
@@ -63,5 +84,7 @@ function parseCode(code) {
 
 module.exports = {
   addScript,
-  loadScript
+  loadScript,
+  addError,
+  addLog
 }

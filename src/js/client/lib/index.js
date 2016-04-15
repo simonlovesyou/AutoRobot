@@ -2,7 +2,7 @@ import hotkey from './hotkey.js';
 import hotstring from './hotstring.js';
 import launch from './launch.js';
 import applescript from 'applescript';
-import {clipboard} from 'electron';
+import {remote} from 'electron';
 
 
 module.exports = {
@@ -10,5 +10,5 @@ module.exports = {
   hotstring,
   launch,
   applescript,
-  clipboard
+  clipboard: remote.clipboard
 }

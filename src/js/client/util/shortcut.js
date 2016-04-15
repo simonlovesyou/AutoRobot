@@ -1,4 +1,5 @@
-import {globalShortcut} from 'electron';
+import {remote} from 'electron';
+const globalShortcut = remote.globalShortcut;
 const modifiersRegex = [
                         /(?:^|\+)(Command)|(Cmd)/, 
                         /(?:^|\+)(Control)|(Ctrl)/, 
@@ -25,9 +26,6 @@ const keycodeRegex = [
                         /\+(Volume(?:Up|Down|Mute))$/,
                         /\+(Media(?:NextTrack|PreviousTrack|Stop|PlayPause))$/
                       ];
-
-
-console.log(isValid('Command+Insert+9'));
 
 function registerShortcut (shortcut, cb) {
 
