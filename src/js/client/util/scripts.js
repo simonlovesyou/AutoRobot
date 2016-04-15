@@ -31,8 +31,6 @@ function addScript (scriptSrc, cb) {
 
       scripts[scriptSrc] = script;
 
-      console.log(script);
-
       return cb(script);
     });
   } else {
