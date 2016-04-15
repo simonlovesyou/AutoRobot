@@ -5,6 +5,7 @@ import {ipcRenderer} from 'electron';
 console.log(__dirname);
 console.log(process.cwd());
 import {scripts} from './../../client/util/';
+import {window} from './../../client/lib/'
 const babel = require('babel-core');
 const babelOptions = {
   presets: ['es2015']
