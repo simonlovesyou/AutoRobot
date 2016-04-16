@@ -91,18 +91,6 @@ Before executing the scripts they're evaluated with [UglifyJS](https://github.co
 
 #### Program
  - launch
- - exit
-
-#### Screen
- - getPixelColor
- - getScreenSize
-
-
-
-
-
-
-
 
 
 
