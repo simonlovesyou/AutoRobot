@@ -92,5 +92,16 @@ Before executing the scripts they're evaluated with [UglifyJS](https://github.co
 #### Program
  - launch
 
+## Build
 
+To help contribute or test AutoRobot, follow these steps:
 
+```
+git clone https://github.com/simonlovesyou/AutoRobot.git
+cd autorobot
+npm i
+mkdir tempScript # This is a temporary folder for adding userscripts. Will be removed in final build and when a GUI has been created.
+touch tempScript/index.js # This is the expected name for the user script
+npm run build # Alt. npm run dev
+npm start
+```
