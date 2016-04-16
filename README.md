@@ -68,7 +68,6 @@ hotkey('Alt+MediaPlayPause', (err) => {
 });
 ```
 
-
 ## Documentation
 
 ### Scripts
