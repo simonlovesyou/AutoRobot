@@ -18,6 +18,7 @@ Hotkeys are defined with the function ``hotkey`` that accepts a string and a cal
 
 ```javascript
 import hotkey from 'hotkey';
+import launch from 'launch';
 let spotify;
 
 hotkey('Cmd+Alt+1', (err) => {
@@ -50,6 +51,8 @@ AutoRobot can execute arbitrary AppleScript. In the following example we will as
 
 ```javascript
 import applescript from 'applescript';
+import hotkey from 'hotkey';
+
 const script = 'tell application "iTunes" to get name of selection';
 
 hotkey('Alt+MediaPlayPause', (err) => {
@@ -75,7 +78,7 @@ Before executing the scripts they're evaluated with [UglifyJS](https://github.co
 
 ### API (WIP, may change)
 #### Hotstring
-
+ - Not possible at the moment. 
 #### Hotkey
 
 #### Mouse 
