@@ -5,7 +5,6 @@ import log from './log';
 
 
 module.exports = {
-  scripts,
   setUserRequire,
   shortcut,
   log
