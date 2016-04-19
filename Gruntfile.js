@@ -11,6 +11,16 @@ module.exports = function(grunt) {
       options: {
         presets: ['es2015']
       },
+      test: {
+        files: [{
+          expand: true,
+          cwd: 'test/',
+          src: ['*.js'],
+          dest: './client/test/',
+          ext: '.js',
+          extDot: 'last'
+        }]
+      },
 	    main: {
         options: {
           sourceMap: dev
@@ -87,6 +97,10 @@ module.exports = function(grunt) {
 	  		files: ["src/js/client/**/*.js"],
 	  		tasks: ["babel:client"]
 	  	},
+      jsx: {
+        files: ["src/app/**/*.js", "src/app/**/*.jsx"],
+        tasks: ["babel:react"]
+      }, 
       main: {
         files: ["src/js/*.js", "src/js/background/*.js"],
         tasks: ["babel:main"]
