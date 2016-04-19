@@ -8,12 +8,20 @@
   },
   "dependencies": {
     "babel-core": "^6.7.4",
-    "bluebird": "^2.9.33",
+    "bluebird": "^2.10.2",
     "bootstrap": "^3.3.5",
     "datauri": "^0.8.0",
     "dialogs": "^1.1.8",
     "lodash": "^3.10.1",
-    "node-dir": "^0.1.11",
+    "react": "^15.0.1",
+    "react-dom": "^15.0.1",
+    "react-highlight": "^0.8.0",
+    "react-highlighter": "^0.3.1",
+    "react-redux": "^4.4.5",
+    "react-syntax-highlighter": "^2.0.1",
+    "redux": "^3.4.0",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.0.1",
     "safe-eval": "^0.2.0"
   },
   "scripts": {
