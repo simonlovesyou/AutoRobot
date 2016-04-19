@@ -11,6 +11,20 @@ module.exports = function(grunt) {
       options: {
         presets: ['es2015']
       },
+      react: {
+        options: {
+          presets: ['es2015', 'react', 'stage-1'],
+          sourceMap: dev
+        },
+        files: [{
+          expand: true,
+          cwd: 'src/app/',
+          src: ['**/*.js', '**/*.jsx'],
+          dest: './client/app/',
+          ext: '.js',
+          extDot: 'last'
+        }]
+      },
       test: {
         files: [{
           expand: true,
@@ -70,6 +84,14 @@ module.exports = function(grunt) {
     eslint: {
       target: ["./src/**/*.js"]
     },
+    copy: {
+      main: {
+        files: [
+          // includes files within path 
+          {expand: true, src: ['test/scripts/*'], dest: 'client/test/scripts/', flatten: true, filter: 'isFile'},
+        ],
+      },
+    },
     clean: {
       tmp: ["client/**/*", "!client/package.json", "!client/node_modules/**", "!client/icon.png"]
     },
@@ -105,6 +127,14 @@ module.exports = function(grunt) {
         files: ["src/js/*.js", "src/js/background/*.js"],
         tasks: ["babel:main"]
       },
+      test: {
+        files: ["test/*.js"],
+        tasks: ["babel:test"]
+      },
+      copy: {
+        files: ["test/syntax/*.js"],
+        tasks: ["babel:copy"]
+      },
       "client-util": {
         files: ["src/js/client/util/*.js"],
         tasks: ["babel:client-util"]
@@ -116,7 +146,7 @@ module.exports = function(grunt) {
 	  }
 	});
 
-	grunt.registerTask("dev", ["clean", "babel", "jade", "watch"]);
+	grunt.registerTask("dev", ["clean", "babel", "copy", "jade", "watch"]);
   grunt.registerTask("build", ["clean", "babel", "jade"]);
 
 };
