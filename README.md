@@ -70,27 +70,7 @@ hotkey('Alt+MediaPlayPause', (err) => {
 
 ## Documentation
 
-### Scripts
-Each script is a plain .txt or .js file with Javascript. A plain Javascript file will run upon execution, but some blocks may be defined to run only when some event occurs, such as a keystroke or hotkeypress. 
-
-Before executing the scripts they're evaluated with [UglifyJS](https://github.com/mishoo/UglifyJS). If the scripts pass the evaluation they will be parsed to ES5 Javascript (Which means you can write Javascript/Node.js with ES6+) and they're executed with the use of [safe-eval](https://www.npmjs.com/package/safe-eval). Any syntax error found before execution must be fixed before the script can run. 
-
-### API (WIP, may change)
-#### Hotstring
- - Not possible at the moment. 
-#### Hotkey
-
-#### Mouse 
- - setMouseDelay
- - moveMouse
- - moveMouseSmooth
- - mouseClick
- - mouseToggle
- - getMousePos
- - scrollMouse
-
-#### Program
- - launch
+Please see the [docs](docs/README.md)
 
 ## Build
 
@@ -99,9 +79,7 @@ To help contribute or test AutoRobot, follow these steps:
 ```
 git clone https://github.com/simonlovesyou/AutoRobot.git
 cd autorobot
-npm i
-mkdir tempScript # This is a temporary folder for adding userscripts. Will be removed in final build and when a GUI has been created.
-touch tempScript/index.js # This is the expected name for the user script
+npm install
 npm run build # Alt. npm run dev
 npm start
 ```
