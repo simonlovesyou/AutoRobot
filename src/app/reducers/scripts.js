@@ -170,6 +170,11 @@ function scriptReducer(state = {}, action) {
               $push: [action.log]
             }
           }
+        },
+        activeScript: {
+          logs: {
+            $push: [action.log]
+          }
         }
       })
     case 'TOGGLE_SCRIPT':
