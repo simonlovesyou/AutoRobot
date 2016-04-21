@@ -59,6 +59,14 @@ export default class Script extends Component {
         );
     }
 
+    let logs = [];
+
+    if(this.props.logs.length > 0) {
+      this.props.logs.forEach((log, i) => {
+        logs.push(<p className={log instanceof Error ? 'error' : 'log'} key={i}> {log.message ? 'Error: ' + log.message : log} </p>); 
+      });
+    }
+
     return (
       <div className="scriptView">
         <h1> {this.props.name} </h1>
