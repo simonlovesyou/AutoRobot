@@ -1,4 +1,13 @@
-import {remote} from 'electron';
+const test = process.env.NODE_ENV ? !!process.env.NODE_ENV.match(/test/) : false;
+
+var remote;
+
+if(test) {
+  remote = require('electron');
+} else {
+  remote = require('electron').remote;
+}
+
 const globalShortcut = remote.globalShortcut;
 const modifiersRegex = [
                         /(?:^|\+)(Command)|(Cmd)/, 
