@@ -108,6 +108,12 @@ module.exports = {
   loadScriptSuccess,
   loadScriptUnsuccess,
   loadScriptPending,
+  refreshScript,
+  refreshScriptUnsuccess,
+  refreshScriptSuccess,
+  refreshScriptPending,
   toggleScript,
-  addLog
+  addLog,
+  log,
+  removeScript
 };
