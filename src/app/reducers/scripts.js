@@ -182,7 +182,15 @@ function scriptReducer(state = {}, action) {
         $merge: {
           activeScript: Object.assign({}, state.scripts[action.src], {src: action.src})
         }
-      })
+      });
+    case 'REMOVE_SCRIPT':
+      let newState = Object.assign({}, state);
+      newState.scripts = Object.assign({}, state.scripts);
+      newState.activeScript = Object.assign({}, state.activeScript);
+      delete newState.scripts[action.src];
+      delete newState.activeScript;
+      newState.activeScript = {};
+      return newState;
     default:
       return state;
   }
