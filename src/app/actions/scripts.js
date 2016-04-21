@@ -96,7 +96,7 @@ const refreshScript = (scriptSrc, name) =>
 
     return readFile(scriptSrc, 'utf8')
 
-    .then(content => dispatch(refreshScriptSuccess(scriptSrc, content, name, false)))
+    .then(content => dispatch(refreshScriptSuccess(scriptSrc, name, content, 'OK')))
 
     .catch(err => dispatch(refreshScriptUnsuccess(scriptSrc, name, err)));
   }
