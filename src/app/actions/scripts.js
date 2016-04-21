@@ -84,7 +84,12 @@ const toggleScript = (scriptSrc) => ({
   src: scriptSrc
 });
 
-const refreshScript = (scriptSrc) => 
+const removeScript = (scriptSrc) => ({
+  type: 'REMOVE_SCRIPT',
+  src: scriptSrc
+});
+
+const refreshScript = (scriptSrc, name) => 
   (dispatch) => {
 
     dispatch(refreshScriptPending(scriptSrc, 'Pending'));
