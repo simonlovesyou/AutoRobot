@@ -98,8 +98,6 @@ function scriptReducer(state = {}, action) {
       })
       
     case 'LOAD_SCRIPT_SUCCESSFUL':
-      let status = action.status;
-      console.log(action);
       return update(state, {
         scripts: {
           [action.src]: {
@@ -115,7 +113,8 @@ function scriptReducer(state = {}, action) {
           [action.src]: {
             $merge: {
               status: action.error.message,
-              name: action.name
+              name: action.name,
+              error: action.error
             }
           }
         }
@@ -137,12 +136,10 @@ function scriptReducer(state = {}, action) {
       })
     case 'REFRESH_SCRIPT_SUCCESSFUL':
       let validated = scriptValidate(action.content, action.name)
-      console.log(validated);
       return update(state, {
         scripts: {
           [action.src]: {
             $merge: validated
-            
           }
         },
         activeScript: {
@@ -164,7 +161,7 @@ function scriptReducer(state = {}, action) {
             }
           }
         }
-      })
+      });
     case 'ADD_SCRIPT_LOG':
       return update(state, {
         scripts: {
@@ -175,11 +172,7 @@ function scriptReducer(state = {}, action) {
           }
         }
       })
-    case 'RUN_SCRIPT':
-      runScript(state.scripts[action.src], action.src);
-      return state;
     case 'TOGGLE_SCRIPT':
-      console.log(action);
       return update(state, {
         $merge: {
           activeScript: Object.assign({}, state.scripts[action.src], {src: action.src})
