@@ -2,6 +2,9 @@ import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Highlight from 'react-syntax-highlighter';
 import { docco } from 'react-syntax-highlighter/dist/styles';
+import safeEval from 'safe-eval';
+import lib from '../../../client/lib';
+import {setUserRequire} from '../../../client/util';
 
 export default class Script extends Component {
 
@@ -11,12 +14,38 @@ export default class Script extends Component {
     content: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     onRunClick: PropTypes.func.isRequired,
+    onScriptLog: PropTypes.func.isRequired,
+    logs: PropTypes.array.isRequired,
     error: PropTypes.object
   }
 
   constructor (props) {
     super(props);
+    this.runScript = this.runScript.bind(this);
   };
+
+  runScript(log) {
+    let userContext = {
+      require: setUserRequire(lib, this.props.src),
+      console: {
+        log: log(this.props.src)
+      },
+      setTimeout,
+      setImmediate,
+      __dirname: this.props.src,
+      Math
+    };
+
+    /*window.onerror = function myErrorHandler(error) {
+      log(this.props.src)(e);
+    }*/
+
+    try {
+      safeEval(this.props.code, userContext);
+    } catch(e) {
+      log(this.props.src)(e);
+    }
+  }
 
   render () {
 
