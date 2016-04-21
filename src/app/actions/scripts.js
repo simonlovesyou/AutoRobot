@@ -34,20 +34,20 @@ const loadScriptSuccess = (scriptSrc, content, name, validated) => ({
   content
 });
 
-const refreshScriptSucces = (scriptSrc, content, name, validated) => ({
+const refreshScriptSuccess = (scriptSrc, name, content, validated) => ({
   type: 'REFRESH_SCRIPT_SUCCESSFUL',
   src: scriptSrc,
-  validated,
   name,
-  content
+  content,
+  validated
 });
 
 
 const loadScriptUnsuccess = (scriptSrc, name, error) => ({
   type: 'LOAD_SCRIPT_UNSUCCESSFUL',
   src: scriptSrc,
-  error,
-  name
+  name,
+  error
 });
 
 const refreshScriptUnsuccess = (scriptSrc, name, error) => ({
