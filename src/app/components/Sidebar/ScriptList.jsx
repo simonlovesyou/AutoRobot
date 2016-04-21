@@ -1,6 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 import Script from './Script';
-import ScriptFolder from './ScriptFolder'
 import ReactDOM from 'react-dom';
 
 export default class ScriptList extends Component {
