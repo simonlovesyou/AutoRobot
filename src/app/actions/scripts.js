@@ -73,6 +73,11 @@ const addLog = (scriptSrc, log) => ({
   log
 });
 
+const log = (dispatch, scriptSrc) => 
+  (message) => {
+    let line = (new Error).stack.split("\n")[4];
+    return dispatch(addLog(scriptSrc, message, line));
+  }
 
 const toggleScript = (scriptSrc) => ({
   type: 'TOGGLE_SCRIPT',
