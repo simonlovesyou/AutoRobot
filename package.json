@@ -4,7 +4,7 @@
   "description": "Open-source application for macro-creation and automation software.",
   "main": "client/index.js",
   "scripts": {
-    "test": "node_modules/.bin/electron-mocha ./client/test",
+    "test": "NODE_ENV='test' node_modules/.bin/electron-mocha ./client/test/index.js",
     "dev": "NODE_ENV='dev' grunt dev",
     "build": "NODE_ENV='production' grunt build",
     "start": "script='/Users/simon/Documents/autorobot/tempScript/index.js' electron ."
