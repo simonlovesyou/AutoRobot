@@ -76,10 +76,16 @@ export default class Script extends Component {
         <Highlight language='javascript' style={docco}>
           {this.props.content}
         </Highlight>
-        <button onClick={() => this.props.onRunClick(this.props.src)} disabled={this.props.status !== 'OK'}> Run </button>
+        <button onClick={() => this.runScript(this.props.onScriptLog)} disabled={this.props.status !== 'OK'}> Run </button>
         <button onClick={() => this.props.onRefreshClick(this.props.src)}> Refresh </button>
+        <button onClick={() => this.props.onRemoveScript(this.props.src)}> Remove </button>
+        <div id="logs">
+          {logs}
+        </div>
+
       </div>
     );
   }
 
 }
+//<button onClick={() => this.props.onRunClick(this.props.src)} disabled={this.props.status !== 'OK'}> Run </button>
