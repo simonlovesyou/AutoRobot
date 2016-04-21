@@ -45,3 +45,15 @@ npm install
 npm run build # Alt. npm run dev
 npm start
 ```
+
+## Roadmap
+ - ~~Test redux actions~~
+ - ~~Test redux reducers~~
+ - ~~Set up an internal require function~~
+ - Tests for user-lib
+ - Keep track of 
+ - Add Tray to user-lib
+ - Add BrowserWindows to user-lib
+ - Design of application
+ - Write or find a lib for handling application windows
+ - File dialog instead of writing a path in the application
