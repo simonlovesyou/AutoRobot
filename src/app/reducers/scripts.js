@@ -123,13 +123,13 @@ function scriptReducer(state = {}, action) {
       return update(state, {
         scripts: {
           [action.src]: {
-            $merge: {
+            $set: {
               status: action.status
             }
           }
         },
         activeScript: {
-          $merge: {
+          $set: {
             status: action.status
           }
         }
