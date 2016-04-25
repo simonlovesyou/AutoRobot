@@ -9,7 +9,6 @@
   "dependencies": {
     "babel-core": "^6.7.4",
     "bluebird": "^2.10.2",
-    "bootstrap": "^3.3.5",
     "datauri": "^0.8.0",
     "dialogs": "^1.1.8",
     "lodash": "^3.10.1",
