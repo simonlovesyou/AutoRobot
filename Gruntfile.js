@@ -131,6 +131,10 @@ module.exports = function(grunt) {
         files: ["test/*.js"],
         tasks: ["babel:test"]
       },
+      jade: {
+        files: ["src/jade/*.js"],
+        tasks: ["jade"]
+      },
       copy: {
         files: ["test/syntax/*.js"],
         tasks: ["babel:copy"]
