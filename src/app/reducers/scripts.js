@@ -124,13 +124,15 @@ function scriptReducer(state = {}, action) {
         scripts: {
           [action.src]: {
             $set: {
-              status: action.status
+              status: action.status,
+              name: action.name,
             }
           }
         },
         activeScript: {
           $set: {
-            status: action.status
+            status: action.status,
+            name: action.name
           }
         }
       })

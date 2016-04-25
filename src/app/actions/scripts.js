@@ -19,9 +19,10 @@ const loadScriptPending = (scriptSrc, name, status) => ({
 });
 
 
-const refreshScriptPending = (scriptSrc, status) => ({
+const refreshScriptPending = (scriptSrc, name, status) => ({
   type: 'REFRESH_SCRIPT_PENDING',
   src: scriptSrc,
+  name,
   status
 });
 
@@ -92,7 +93,7 @@ const removeScript = (scriptSrc) => ({
 const refreshScript = (scriptSrc, name) => 
   (dispatch) => {
 
-    dispatch(refreshScriptPending(scriptSrc, 'Pending'));
+    dispatch(refreshScriptPending(scriptSrc, name, 'Pending'));
 
     return readFile(scriptSrc, 'utf8')
 

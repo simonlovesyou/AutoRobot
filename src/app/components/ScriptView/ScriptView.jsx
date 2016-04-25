@@ -71,13 +71,13 @@ export default class Script extends Component {
       <div className="scriptView">
         <h1> {this.props.name} </h1>
         <h2> {this.props.src} </h2>
-        <h3> {this.props.status} </h3>
+        <h3 className={"alert" + this.props.status === 'OK' ? "alert-success" : "alert-warning"}> {this.props.status} </h3>
         {syntaxError}
         <Highlight language='javascript' style={docco}>
           {this.props.content}
         </Highlight>
         <button onClick={() => this.runScript(this.props.onScriptLog)} disabled={this.props.status !== 'OK'}> Run </button>
-        <button onClick={() => this.props.onRefreshClick(this.props.src)}> Refresh </button>
+        <button onClick={() => this.props.onRefreshClick(this.props.src, this.props.name)}> Refresh </button>
         <button onClick={() => this.props.onRemoveScript(this.props.src)}> Remove </button>
         <div id="logs">
           {logs}
