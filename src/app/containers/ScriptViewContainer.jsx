@@ -21,8 +21,8 @@ const mapDispatchToProps = (dispatch) => {
     onRunClick: (src) => {
       dispatch(scripts.runScript(src))
     },
-    onRefreshClick: (src) => {
-      dispatch(scripts.refreshScript(src))
+    onRefreshClick: (src, name) => {
+      dispatch(scripts.refreshScript(src, name))
     },
     onScriptLog: (src) => scripts.log(dispatch, src),
     onRemoveScript: (src) => {
