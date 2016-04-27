@@ -1,0 +1,32 @@
+#addScript {
+	background-color:white;
+	justify-content: center;
+	margin-top:20px;
+	height:100%;
+	width: 100%;
+}
+
+#addScript > div {
+    justify-content: flex-end;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width:40%;
+}
+
+.close {
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-basis: 100%;
+}
+
+.add-form {
+	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width:100%;
+}
+
+.add-form > button[type="submit"] {
+	margin-top:20px;
+}

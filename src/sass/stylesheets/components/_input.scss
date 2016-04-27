@@ -1,0 +1,15 @@
+input {
+	padding: 10px;
+	border: none;
+	border-bottom: solid 2px #c9c9c9;
+	transition: border 0.3s;
+	box-shadow: none;
+	margin: 10px 0;
+	width:100%;
+}
+
+input:focus {
+  border-bottom: solid 2px #969696;
+  -webkit-appearance: none;
+  outline: none;
+}

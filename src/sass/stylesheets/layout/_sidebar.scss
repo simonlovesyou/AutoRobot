@@ -1,0 +1,29 @@
+#scriptList {
+	flex-direction: column;
+	order: 0;
+	color: white;
+	background-color:#161616;
+	max-width:165px;
+	margin: 0;
+	padding: 0;
+	div {
+		justify-content:space-around;
+		button {
+		    width: 30px;
+		    height: 30px;
+		    align-self: center;
+		}
+	}
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style:none;
+	}
+}
+
+.script {
+	display: flex;
+	flex: 1 100%;
+	flex-direction: row;
+	align-self: flex-start;
+}
