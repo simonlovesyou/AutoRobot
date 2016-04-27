@@ -17,7 +17,12 @@ export default class Script extends Component {
   render () {
     return (
       <li className="script flex" onClick={() => this.props.onClick(this.props.src)}> 
-        <p> {this.props.name} </p> <p> <em> {this.props.status} </em> </p> 
+        <div className="flex script-name"> 
+          <p> {this.props.name} </p>
+        </div>
+        <div className="flex script-status">
+          <p> <em> {this.props.status} </em> </p> 
+        </div>
       </li>
     );
   }

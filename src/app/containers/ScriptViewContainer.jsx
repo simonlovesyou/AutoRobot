@@ -7,10 +7,10 @@ const mapStateToProps = (state) => {
   let activeScript = state.scripts.activeScript || {activeScript: {}}
 
   return {
-    src: activeScript.src || 'No active script src',
-    content: activeScript.content || 'No active script code',
-    status: activeScript.status || 'No active script',
-    name: activeScript.name || 'No name',
+    src: activeScript.src || '',
+    content: activeScript.content || '',
+    status: activeScript.status || '',
+    name: activeScript.name || '',
     code: activeScript.code || '',
     logs: activeScript.logs || [],
     error: activeScript.error || {},

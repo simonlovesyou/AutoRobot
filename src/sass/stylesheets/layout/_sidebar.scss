@@ -3,18 +3,13 @@
 	order: 0;
 	color: white;
 	background-color:#161616;
-	max-width:165px;
+	width:165px;
+	min-width:165px;
 	margin: 0;
 	padding: 0;
 	height:100%;
 	div {
-		justify-content:space-around;
-		button {
-		    width: 30px;
-		    height: 30px;
-		    align-self: center;
-		    color: black;
-		}
+		
 	}
 	ul {
 		margin: 0;
@@ -23,9 +18,13 @@
 	}
 }
 
-.script {
-	display: flex;
-	flex: 1 100%;
-	flex-direction: row;
-	align-self: flex-start;
+#scriptList > div {
+	justify-content:space-around;
+	button {
+	    width: 30px;
+	    height: 30px;
+	    align-self: center;
+	    color: black;
+	}
 }
+

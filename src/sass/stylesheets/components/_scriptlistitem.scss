@@ -1,0 +1,17 @@
+.script {
+	display: flex;
+	flex: 1 100%;
+	flex-direction: row;
+	align-self: flex-start;
+}
+
+.script-name {
+	align-items: flex-start;
+    margin-left: 13%;
+}
+
+.script-status {
+    justify-content: flex-end;
+    width: 100%;
+    margin-right: 13%;
+}

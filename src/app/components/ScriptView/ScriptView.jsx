@@ -37,15 +37,20 @@ export default class Script extends Component {
       Math
     };
 
-    /*window.onerror = function myErrorHandler(error) {
-      log(this.props.src)(e);
-    }*/
-
     try {
       safeEval(this.props.code, userContext);
     } catch(e) {
       log(this.props.src)(e);
     }
+  }
+
+  renderNoScript() {
+    return (
+        <div className="scriptView flex container">
+          <h2> Looks like you havent added any scripts yet! </h2>
+          <h3> Click on the + button on the sidebar to the left to add one, and then select it from the list. </h3>
+        </div>
+      );
   }
 
   render () {
@@ -69,6 +74,11 @@ export default class Script extends Component {
     }
 
     if(this.props.show) {
+
+      if(!this.props.name || !this.props.src) {
+        return this.renderNoScript()
+      }
+
 
       return (
         <div className="scriptView flex container">
