@@ -13,7 +13,6 @@ export default class ScriptList extends Component {
     super(props);
   };
 
-
   render () {
 
     let renderScripts = [];
@@ -23,11 +22,11 @@ export default class ScriptList extends Component {
     }
 
     let scripts = renderScripts.map((script) => {
-      return (<Script src={script.src} 
-                      name={script.name}
-                      key={script.src} 
-                      onClick={this.props.onScriptClick} 
-                      status={script.status}/>);
+      return (<Script src={script.src || ''}
+                      name={script.name || ''}
+                      key={script.src || ''}
+                      onClick={this.props.onScriptClick || ''}
+                      status={script.status || ''}/>);
     });
 
     if(!this.props.show) {
