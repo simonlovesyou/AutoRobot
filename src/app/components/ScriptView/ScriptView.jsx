@@ -82,9 +82,9 @@ export default class Script extends Component {
 
       return (
         <div className="scriptView flex container">
-          <h1> {this.props.name} </h1>
-          <h2> {this.props.src} </h2>
-          <h3 className={"alert" + this.props.status === 'OK' ? "alert-success" : "alert-warning"}> {this.props.status} </h3>
+          <h2> {this.props.name} </h2>
+          <h3> {this.props.src} </h3>
+          <h4 className={"alert" + this.props.status === 'OK' ? "alert-success" : "alert-warning"}> {this.props.status} </h4>
           {syntaxError}
           <div>
             <button onClick={() => this.runScript(this.props.onScriptLog)} disabled={this.props.status !== 'OK'}> Run </button>
@@ -96,6 +96,7 @@ export default class Script extends Component {
               {this.props.content}
             </Highlight>
           </div>
+          <h5> Logs: </h5>
           <div id="logs">
             {logs}
           </div>
