@@ -1,12 +1,11 @@
 import { ScriptList } from '../components/';
 import { connect } from 'react-redux';
-import { scripts } from '../actions/'
+import { scripts, app } from '../actions/'
 
 const mapStateToProps = (state) => {
-  console.log("Received state:");
-  console.log(state);
   return {
-    scripts: state.scripts
+    scripts: state.scripts.scripts,
+    show: !state.app.showAddDialog
   }
 }
 

@@ -4,15 +4,17 @@ import { scripts } from '../actions/'
 
 const mapStateToProps = (state) => {
 
-  let error = state.activeScript.error;
+  let activeScript = state.scripts.activeScript || {activeScript: {}}
+
   return {
-    src: state.activeScript.src || 'No active script src',
-    content: state.activeScript.content || 'No active script code',
-    status: state.activeScript.status || 'No active script',
-    name: state.activeScript.name || 'No name',
-    code: state.activeScript.code || '',
-    logs: state.activeScript.logs || [],
-    error
+    src: activeScript.src || 'No active script src',
+    content: activeScript.content || 'No active script code',
+    status: activeScript.status || 'No active script',
+    name: activeScript.name || 'No name',
+    code: activeScript.code || '',
+    logs: activeScript.logs || [],
+    error: activeScript.error || {},
+    show: state.app.showAddDialog === undefined ? true : !state.app.showAddDialog
   }
 }
 
