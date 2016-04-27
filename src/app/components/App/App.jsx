@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-import { ScriptListContainer, AddScript, ScriptViewContainer } from '../../containers'
+import { ScriptListContainer, AddScriptContainer, ScriptViewContainer } from '../../containers'
 
 let App = () => (
-  <div>
+  <div className="flex">
     <ScriptListContainer />
-    <AddScript />
+    <AddScriptContainer />
     <ScriptViewContainer />
   </div>
 )
