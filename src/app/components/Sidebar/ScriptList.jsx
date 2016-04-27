@@ -30,6 +30,9 @@ export default class ScriptList extends Component {
                       status={script.status}/>);
     });
 
+    if(!this.props.show) {
+      return null;
+    }
     return (
       <div id="scriptList" key={0}>
         <ul>
