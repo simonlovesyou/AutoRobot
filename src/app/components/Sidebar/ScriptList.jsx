@@ -33,7 +33,11 @@ export default class ScriptList extends Component {
       return null;
     }
     return (
-      <div id="scriptList" key={0}>
+      <div id="scriptList" className="container flex" key={0}>
+        <div className="flex">
+          <h4 className="flex"> Scripts </h4>
+          <button className="flex" onClick={() => {this.props.onAddScriptClick()}}> + </button>
+        </div>
         <ul>
           {scripts}
         </ul>
