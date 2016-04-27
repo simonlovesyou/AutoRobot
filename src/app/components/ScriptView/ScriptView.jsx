@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Highlight from 'react-syntax-highlighter';
-import { docco } from 'react-syntax-highlighter/dist/styles';
+import { github } from 'react-syntax-highlighter/dist/styles';
 import safeEval from 'safe-eval';
 import lib from '../../../client/lib';
 import {setUserRequire} from '../../../client/util';
