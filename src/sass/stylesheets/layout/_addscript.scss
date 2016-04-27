@@ -2,7 +2,6 @@
 	background-color:white;
 	justify-content: center;
 	margin-top:20px;
-	height:100%;
 	width: 100%;
 }
 
@@ -11,6 +10,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     width:40%;
+    height:50%;
 }
 
 .close {

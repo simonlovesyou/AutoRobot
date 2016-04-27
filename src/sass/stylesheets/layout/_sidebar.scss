@@ -6,12 +6,14 @@
 	max-width:165px;
 	margin: 0;
 	padding: 0;
+	height:100%;
 	div {
 		justify-content:space-around;
 		button {
 		    width: 30px;
 		    height: 30px;
 		    align-self: center;
+		    color: black;
 		}
 	}
 	ul {

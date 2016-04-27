@@ -27,9 +27,23 @@
   flex-direction: column;
 }
 
+/**
+ * Make the root component in body have no padding.
+ *
+ */
 .root {
   padding-left: 0;
   padding-right: 0;
+  height: 100%;
+}
+
+/**
+ * Make the root component of react have full height.
+ *
+ */
+.root > div { 
+  height:100%;
+  display: flex;
 }
 
 .flex {
