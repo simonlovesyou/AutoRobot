@@ -2,3 +2,5 @@ node_modules/
 client/
 !src/js/client/
 **/*.log
+.sass-cache
+tempScript/
