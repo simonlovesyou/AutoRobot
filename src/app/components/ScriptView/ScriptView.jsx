@@ -86,12 +86,16 @@ export default class Script extends Component {
           <h2> {this.props.src} </h2>
           <h3 className={"alert" + this.props.status === 'OK' ? "alert-success" : "alert-warning"}> {this.props.status} </h3>
           {syntaxError}
-          <button onClick={() => this.runScript(this.props.onScriptLog)} disabled={this.props.status !== 'OK'}> Run </button>
-          <button onClick={() => this.props.onRefreshClick(this.props.src, this.props.name)}> Refresh </button>
-          <button onClick={() => this.props.onRemoveScript(this.props.src)}> Remove </button>
-          <Highlight language='javascript' style={github}>
-            {this.props.content}
-          </Highlight>
+          <div>
+            <button onClick={() => this.runScript(this.props.onScriptLog)} disabled={this.props.status !== 'OK'}> Run </button>
+            <button onClick={() => this.props.onRefreshClick(this.props.src, this.props.name)}> Refresh </button>
+            <button onClick={() => this.props.onRemoveScript(this.props.src)}> Remove </button>
+          </div>
+          <div className="code">
+            <Highlight language='javascript' style={github}>
+              {this.props.content}
+            </Highlight>
+          </div>
           <div id="logs">
             {logs}
           </div>
