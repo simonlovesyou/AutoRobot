@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onScriptClick: (src) => {
       dispatch(scripts.toggleScript(src))
+    },
+    onAddScriptClick: () => {
+      dispatch(app.toggleAddDialog());
     }
   }
 }
