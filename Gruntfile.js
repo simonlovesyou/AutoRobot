@@ -143,7 +143,7 @@ module.exports = function(grunt) {
         tasks: ["babel:test"]
       },
       jade: {
-        files: ["src/jade/*.js"],
+        files: ["src/jade/*.jade"],
         tasks: ["jade"]
       },
       sass: {
