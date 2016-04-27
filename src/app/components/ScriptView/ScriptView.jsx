@@ -16,7 +16,8 @@ export default class Script extends Component {
     onRunClick: PropTypes.func.isRequired,
     onScriptLog: PropTypes.func.isRequired,
     logs: PropTypes.array.isRequired,
-    error: PropTypes.object
+    error: PropTypes.object,
+    show: PropTypes.bool.isRequired
   }
 
   constructor (props) {
