@@ -111,6 +111,17 @@ module.exports = function(grunt) {
         }
       }
     },
+    sass: {
+        dist: {
+          files: [{
+            expand: true,
+            cwd: 'src/sass/stylesheets/',
+            src: ['main.scss'],
+            dest: 'client/static/css/',
+            ext: '.css'
+          }],
+        }
+    },
 	  watch: {
       options: {
         spawn: false
@@ -135,6 +146,10 @@ module.exports = function(grunt) {
         files: ["src/jade/*.js"],
         tasks: ["jade"]
       },
+      sass: {
+        files: ['src/sass/**/*.scss'],
+        tasks: ['sass']
+      },
       copy: {
         files: ["test/syntax/*.js"],
         tasks: ["babel:copy"]
@@ -150,7 +165,7 @@ module.exports = function(grunt) {
 	  }
 	});
 
-	grunt.registerTask("dev", ["clean", "babel", "copy", "jade", "watch"]);
+	grunt.registerTask("dev", ["clean", "babel", "copy", "jade", "sass", "watch"]);
   grunt.registerTask("build", ["clean", "babel", "jade"]);
 
 };
