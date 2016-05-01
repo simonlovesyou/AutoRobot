@@ -7,6 +7,7 @@
     "test": "test"
   },
   "dependencies": {
+    "application-manager": "^1.0.0",
     "babel-core": "^6.7.4",
     "bluebird": "^2.10.2",
     "datauri": "^0.8.0",
