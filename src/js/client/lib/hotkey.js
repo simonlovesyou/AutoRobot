@@ -1,7 +1,18 @@
 import {shortcut} from '../util/';
 
-function hotkey (s, cb) {
+function register (s, cb) {
   shortcut.registerShortcut(s, cb);
 }
 
-module.exports = hotkey
+function once (s, cb) {
+  shortcut.registerShortcut(s, () => {
+    shortcut.unregister(s);
+    cb();
+  })
+}
+
+module.exports = {
+  register,
+  unregister: shortcut.unregister,
+  once
+}
