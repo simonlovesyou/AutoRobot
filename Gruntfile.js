@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: 'test/',
-          src: ['*.js'],
+          src: ['**/*.js', '!scripts/**/*.js'],
           dest: './client/test/',
           ext: '.js',
           extDot: 'last'
@@ -139,7 +139,7 @@ module.exports = function(grunt) {
         tasks: ["babel:main"]
       },
       test: {
-        files: ["test/*.js"],
+        files: ["test/**/*.js"],
         tasks: ["babel:test"]
       },
       jade: {
