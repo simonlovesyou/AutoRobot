@@ -171,15 +171,14 @@ module.exports = () => {
         expect(result).to.deep.equal(expected);
       });
     });
-    describe("App actions", () => {
-      describe("toggleAddDialog", () => {
+    describe("removeScript", () => {
+      it("should return the correct action", () => {
 
         let expected = {
-          type: 'TOGGLE_ADD_DIALOG'
-        };
-        console.log(":)");
-        let result = actions.app.toggleAddDialog();
-
+          type: 'REMOVE_SCRIPT',
+          src: 'Some/src',
+        }
+        let result = actions.scripts.removeScript('Some/src');
         expect(result).to.deep.equal(expected);
       });
     });
