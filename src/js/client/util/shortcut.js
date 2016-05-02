@@ -73,5 +73,6 @@ module.exports = {
   registerShortcut,
   unregisterAll: globalShortcut.unregisterAll,
   isRegistered: globalShortcut.isRegistered,
+  unregister: globalShortcut.unregister,
   isValid
 }
