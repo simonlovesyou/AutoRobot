@@ -1,6 +1,7 @@
 node_modules/
 client/
 !src/js/client/
+!client/package.json
 **/*.log
 .sass-cache
 tempScript/
