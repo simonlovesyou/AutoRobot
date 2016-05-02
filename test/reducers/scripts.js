@@ -96,8 +96,6 @@ module.exports = function() {
 
         let scriptPath = path.join(__dirname , '../scripts/InvalidTemp.js');
 
-        console.log(scriptPath);
-
         fs.writeFileSync(scriptPath, 'vra fest = \'fest\'');
 
         store.dispatch(actions.scripts.loadScript(scriptPath, 'Temp'))
