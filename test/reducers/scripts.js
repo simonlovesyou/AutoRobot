@@ -325,5 +325,27 @@ module.exports = function() {
         });
       });
     });
+    describe('REMOVE_SCRIPT', (done) => {
+      it("should remove the specified script", (done) => {
+
+        let scriptPath = path.join(__dirname , '../scripts/ValidSyntax.js');
+
+        store.dispatch(actions.scripts.loadScript(scriptPath, 'Temp'))
+        .then(() => {
+
+          let state = store.getState().scripts;
+
+          expect(state.scripts[scriptPath]).is.ok;
+
+          store.dispatch(actions.scripts.removeScript(scriptPath));
+
+          state = store.getState().scripts;
+
+          expect(state.scripts[scriptPath]).is.not.ok
+
+          done();
+        })
+      });
+    });
   });
 }
