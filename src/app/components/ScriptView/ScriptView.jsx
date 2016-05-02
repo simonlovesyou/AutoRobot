@@ -31,8 +31,8 @@ export default class Script extends Component {
       console: {
         log: log(this.props.src)
       },
-      setTimeout,
-      setImmediate,
+      setTimeout: (cb, mm) => {setTimeout(cb, mm)},
+      setImmediate: (cb) => {setImmediate(cb);},
       __dirname: this.props.src,
       Math
     };
