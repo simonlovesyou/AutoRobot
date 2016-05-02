@@ -11,4 +11,5 @@ Before executing the scripts they're evaluated and parsed with [Babel](https://g
  - [Hotkey](hotkey.md)
  - [Launch](launch.md)
  - [RobotJS (external)](https://github.com/octalmage/robotjs/)
+ - [Application-manager](https://www.npmjs.com/package/application-manager)
  - [applescript (external)](https://www.npmjs.com/package/applescript)
