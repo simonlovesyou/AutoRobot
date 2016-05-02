@@ -1,11 +1,12 @@
-import reducers from '../app/reducers';
-import actions from '../app/actions/';
+import reducers from '../../app/reducers';
+import actions from '../../app/actions/';
 import chai from 'chai';
 import { createStore } from 'redux';
 import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import update from 'react/lib/update'
 import fs from 'fs';
+import path from 'path';
 
 const assert = chai.assert,
       expect = chai.expect;
@@ -20,13 +21,14 @@ module.exports = function() {
     });
 
     describe('Store', () => {
-      it("should return the default state", () => {
-        let state = store.getState();
+      it("should return the default state for scripts", () => {
+        let state = store.getState().scripts;
 
         let expected = {
           scripts: {},
           activeScript: {}
         }
+
         expect(state).to.deep.equal(expected);
       });
     });
@@ -37,7 +39,7 @@ module.exports = function() {
         let scriptPath = __dirname + '/scripts/ValidSyntax.js';
 
         store.dispatch(actions.scripts.loadScriptPending(scriptPath, 'name', 'Pending'));
-        let state = store.getState();
+        let state = store.getState().scripts;
 
         let expected = update({}, {
           scripts: {
@@ -62,21 +64,23 @@ module.exports = function() {
 
         let scriptPath = __dirname + '/scripts/ValidSyntax.js';
 
-        store.dispatch(actions.scripts.refreshScriptPending(scriptPath, 'Pending'));
+        store.dispatch(actions.scripts.refreshScriptPending(scriptPath, 'Test', 'Pending'));
 
-        let state = store.getState();
+        let state = store.getState().scripts;
 
         let expected = update({}, {
           scripts: {
             $set: {
               [scriptPath]: {
-                status: 'Pending'
+                status: 'Pending',
+                name: 'Test'
               }
             },
           },
           activeScript: {
             $set: {
-              status: 'Pending'
+              status: 'Pending',
+              name: 'Test'
             }
           }
         });
@@ -90,7 +94,9 @@ module.exports = function() {
     describe('REFRESH_SCRIPT', (done) => {
       it("should return a state with a script with Syntax error and then refresh it to a status of OK", (done) => {
 
-        let scriptPath = __dirname + '/scripts/InvalidTemp.js';
+        let scriptPath = path.join(__dirname , '../scripts/InvalidTemp.js');
+
+        console.log(scriptPath);
 
         fs.writeFileSync(scriptPath, 'vra fest = \'fest\'');
 
@@ -102,7 +108,7 @@ module.exports = function() {
           store.dispatch(actions.scripts.refreshScript(scriptPath, 'Temp'))
           .then(() => {
 
-            let state = store.getState();
+            let state = store.getState().scripts;
 
             let expected = update({}, {
               scripts: {
@@ -144,7 +150,7 @@ module.exports = function() {
 
     describe('LOAD_SCRIPT_SUCCESS', () => {
       it("should return the correct state with an script of OK status", (done) => {
-        let scriptPath = __dirname + '/scripts/ValidSyntax.js';
+        let scriptPath = path.join(__dirname , '../scripts/ValidSyntax.js');
 
         let expected = update({}, {
           scripts: {
@@ -168,7 +174,7 @@ module.exports = function() {
 
         store.dispatch(actions.scripts.loadScript(scriptPath, 'Test'))
         .then(e => {
-          let state = store.getState();
+          let state = store.getState().scripts;
 
           assert(Boolean(state.scripts[scriptPath]), true);
           expect(state).to.deep.equal(expected);
@@ -176,7 +182,7 @@ module.exports = function() {
         })
       });
      it("should return the correct state with not OK status", (done) => {
-        let scriptPath = __dirname + '/scripts/InvalidSyntax.js';
+        let scriptPath = path.join(__dirname , '../scripts/InvalidSyntax.js');
 
         let expected = update({}, {
           scripts: {
@@ -201,7 +207,7 @@ module.exports = function() {
 
         store.dispatch(actions.scripts.loadScript(scriptPath, 'Test'))
         .then(e => {
-          let state = store.getState();
+          let state = store.getState().scripts;
 
           assert(state.scripts[scriptPath].error instanceof Error, true);
 
@@ -222,7 +228,7 @@ module.exports = function() {
 
         store.dispatch(actions.scripts.loadScript(scriptPath, 'Test'))
         .then(e => {
-          let state = store.getState();
+          let state = store.getState().scripts;
 
           assert(state.scripts[scriptPath].error instanceof Error, true);
           assert(Boolean(state.scripts[scriptPath].status.match(/(ENOENT)/)), true);
@@ -233,7 +239,7 @@ module.exports = function() {
     describe('ADD_SCRIPT_LOG', (done) => {
       it("should return the correct state with an added message", (done) => {
 
-        let scriptPath = __dirname + '/scripts/ValidSyntax.js';
+        let scriptPath = path.join(__dirname , '../scripts/ValidSyntax.js');
 
         let expected = update({}, {
           scripts: {
@@ -269,7 +275,7 @@ module.exports = function() {
           //toggleScript has to get dispatched for the user to dispatch addLog
           store.dispatch(actions.scripts.toggleScript(scriptPath));
           store.dispatch(actions.scripts.addLog(scriptPath, 'Message'));
-          let state = store.getState();
+          let state = store.getState().scripts;
           assert(Boolean(state.scripts[scriptPath]), true);
           expect(state.scripts).to.deep.equal(expected.scripts);
           done();
@@ -277,7 +283,7 @@ module.exports = function() {
       });
       it("should return the correct state with an added error object to log", (done) => {
 
-        let scriptPath = __dirname + '/scripts/ValidSyntax.js';
+        let scriptPath = path.join(__dirname , '../scripts/ValidSyntax.js');
 
         let expected = update({}, {
           scripts: {
@@ -314,7 +320,7 @@ module.exports = function() {
           //toggleScript has to get dispatched for the user to dispatch addLog
           store.dispatch(actions.scripts.toggleScript(scriptPath));
           store.dispatch(actions.scripts.addLog(scriptPath, new Error()));
-          let state = store.getState();
+          let state = store.getState().scripts;
           assert(Boolean(state.scripts[scriptPath]), true);
           expect(state.scripts).to.deep.equal(expected.scripts);
           done();

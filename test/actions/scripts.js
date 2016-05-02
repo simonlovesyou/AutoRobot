@@ -1,4 +1,4 @@
-import actions from '../app/actions/';
+import actions from '../../app/actions/';
 import chai from 'chai';
 import thunk from 'redux-thunk';
 
@@ -7,7 +7,7 @@ const assert = chai.assert,
 
 let testedActions = 0;
 
-module.exports = function() {
+module.exports = () => {
 
   describe("Script actions", () => {
     describe("loadScript", () => {
@@ -120,11 +120,12 @@ module.exports = function() {
 
         let expected = {
           type: 'REFRESH_SCRIPT_PENDING',
+          name: 'Test',
           src: scriptPath,
           status: 'Pending'
         };
 
-        let result = actions.scripts.refreshScriptPending(scriptPath,'Pending');
+        let result = actions.scripts.refreshScriptPending(scriptPath,'Test', 'Pending');
 
         expect(result).to.deep.equal(expected);
         
@@ -170,8 +171,20 @@ module.exports = function() {
         expect(result).to.deep.equal(expected);
       });
     });
-    describe("All actions", () => {
-      it("should all be tested", () => {
+    describe("App actions", () => {
+      describe("toggleAddDialog", () => {
+
+        let expected = {
+          type: 'TOGGLE_ADD_DIALOG'
+        };
+        console.log(":)");
+        let result = actions.app.toggleAddDialog();
+
+        expect(result).to.deep.equal(expected);
+      });
+    });
+    describe("All script actions", () => {
+      it("should be tested", () => {
 
         let actual = Object.keys(actions.scripts).length;
 
