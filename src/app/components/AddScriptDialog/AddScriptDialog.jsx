@@ -24,9 +24,9 @@ export default class AddScript extends Component {
           </div>
 
           <form className="add-form" onSubmit={e => {
-            e.preventDefault()
+            e.preventDefault();
             if (!name.value.trim() || !src.value.trim()) {
-              return
+              return;
             }
             this.props.onAddScript(src.value, name.value);
             this.props.onToggle();
@@ -45,7 +45,6 @@ export default class AddScript extends Component {
           </form>
         </div>
       </div>
-      );
-
+    );
   }
 }

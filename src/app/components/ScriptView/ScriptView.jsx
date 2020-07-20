@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Highlight from 'react-syntax-highlighter';
 import { github } from 'react-syntax-highlighter/dist/styles';
 import safeEval from 'safe-eval';
+//User-land lib
 import lib from '../../../client/lib';
 import {setUserRequire} from '../../../client/util';
 
